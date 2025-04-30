@@ -24,11 +24,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      
-      - name: Configure SSH Keys
-        uses: webfactory/ssh-agent@v0.9.0 # 使用一个配置 ssh-agent 的 action
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }} # 使用我们刚才在 Secrets 里存的私钥
       - name: Add GitHub to known hosts
         run: |
           mkdir -p ~/.ssh
