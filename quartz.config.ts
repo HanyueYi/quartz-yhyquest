@@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Quartz 4",
+    pageTitle: "yhyquest",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
@@ -16,8 +16,8 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "en-US",
-    baseUrl: "quartz.jzhao.xyz",
-    ignorePatterns: ["private", "templates", ".obsidian"],
+    baseUrl: "HanyueYi.github.io/quartz-yhyquest",
+    ignorePatterns: ["private", "templates", ".obsidian","附件","杂","pi plan","private"],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
