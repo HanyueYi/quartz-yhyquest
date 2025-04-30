@@ -24,6 +24,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Checkout Repo with Submodules # 给这个步骤取个名字
+        uses: actions/checkout@v4          # 使用官方的 checkout action v4 版本
+        with:
+          submodules: 'recursive'      # 关键参数：递归检出子模块 (处理 content 目录)
+          fetch-depth: 0             # 关键参数：获取所有历史记录，对子模块处理很重要
       - name: Install Dependencies
         run: npm ci
       - name: Debug Workspace Contents # <--- 新增的调试步骤
