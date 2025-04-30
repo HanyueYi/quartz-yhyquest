@@ -26,6 +26,21 @@ jobs:
           node-version: 22
       - name: Install Dependencies
         run: npm ci
+      - name: Debug Workspace Contents # <--- 新增的调试步骤
+        run: |
+          echo ">>> Current Working Directory:"
+          pwd
+          echo ">>> Root Directory Listing (-al):"
+          ls -al
+          echo ">>> .github/workflows Directory Listing (-al):"
+          ls -al .github/workflows/ # 确认工作流文件本身存在
+          echo ">>> Content Directory Listing (-al):"
+          ls -al content/           # <--- 最关键！看这里有没有 index.md
+          echo ">>> Checking existence of content/index.md specifically:"
+          ls -al content/index.md || echo "!!! content/index.md NOT FOUND by ls !!!" # 尝试直接列出文件
+          echo ">>> Attempting to read first 5 lines of content/index.md:"
+          head -n 5 content/index.md || echo "!!! Could not read content/index.md !!!" # 尝试读取文件头
+
       - name: Build Quartz
         run: npx quartz build
       - name: Upload artifact
