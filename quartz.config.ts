@@ -17,7 +17,7 @@ const config: QuartzConfig = {
     },
     locale: "en-US",
     baseUrl: "HanyueYi.github.io/quartz-yhyquest",
-    ignorePatterns: ["private", "templates", ".obsidian","附件","杂","pi plan","private"],
+    ignorePatterns: ["private", "templates", ".obsidian","附件/Zotero","附件/模版","杂","pi plan","private"],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
