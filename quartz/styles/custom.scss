@@ -1,3 +1,145 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+
+// /* --- KaTeX Math Formula Styles --- */
+// /*
+//  * 用 Flexbox 居中 KaTeX 行间公式 (更健壮的方法)
+//  *
+//  * 通过使用 article.popover-hint 前缀来提升优先级，
+//  * 确保它能覆盖 Quartz 的默认样式。
+//  */
+// article.popover-hint .katex-display {
+//   /* 1. 使用 Flexbox 布局 */
+//   display: flex !important;
+
+//   /* 2. 让公式在水平方向上居中 */
+//   justify-content: center !important;
+
+//   /* 3. (好习惯) 防止过长的公式破坏页面 */
+//   overflow-x: auto !important;
+//   overflow-y: hidden !important;
+// }
+
+
+/* 图片居中 */
+img {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* ========================================== */
+/* 自定义 Callout 样式 (优化和移植后)        */
+/* ========================================== */
+
+
+/* ==============================================================
+  最终 Callout 样式代码 (2025-06-16)
+  将此代码粘贴到 quartz/styles/custom.scss
+ ============================================================== */
+
+/* 1. 精准选择你的定理类 Callout 
+   我们使用 blockquote 标签，并列出所有你需要的类型 
+*/
+blockquote.callout[data-callout="theorem"],
+blockquote.callout[data-callout="proposition"],
+blockquote.callout[data-callout="lemma"],
+blockquote.callout[data-callout="corollary"],
+blockquote.callout[data-callout="definition"] {
+
+  /* 2. 强力覆盖默认样式
+     我们使用 !important 来确保这些规则有最高优先级 
+  */
+  background-color: rgba(0, 0, 0, 0.04) !important;
+  border: 1px solid var(--gray-4) !important; /* 将边框颜色调得更柔和一点 */
+
+  /* 3. 应用你之前写好的其他所有自定义样式 */
+  padding: 1.5em !important;
+  font-family: "CMU Serif", Times, "Noto Serif JP", serif;
+  color: #000000;
+  position: relative;
+
+  /* 4. 嵌套规则来隐藏图标和修改标题 */
+  .callout-icon {
+    display: none !important;
+  }
+
+  .callout-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    color: #000000 !important;
+    padding: 0; // 重置默认的 padding
+  }
+
+  .callout-title-inner > p {
+    color: #000000 !important; // 确保标题文字也是黑色
+  }
+
+  .callout-content {
+    font-size: 1.05em;
+  }
+}
+
+/* 5. 单独为特定类型设置斜体 (这段保持不变) */
+blockquote.callout[data-callout="theorem"] .callout-content,
+blockquote.callout[data-callout="proposition"] .callout-content,
+blockquote.callout[data-callout="lemma"] .callout-content,
+blockquote.callout[data-callout="corollary"] .callout-content {
+  font-style: italic;
+}
+
+/* 确保 Definition 的内容不是斜体 */
+blockquote.callout[data-callout="definition"] .callout-content {
+  font-style: normal;
+}
+
+article.popover-hint .katex {
+  /* 在这里统一调整为你想要的大小，例如 1.1em, 1.15em 等 */
+  font-size: 1.0em !important;
+}
+
+blockquote.callout .katex {
+  font-size: 1.0em !important; 
+}
+
+
+// .qed-symbol {
+//   float: right;
+//   font-weight: bold;
+//   margin-left: 1em;
+// }
+
+
+
+/* --- Proof Environment Styles --- */
+
+/* 整个证明环境的容器 */
+.proof-environment {
+  margin-top: 1.2em;
+  margin-bottom: 1.2em;
+  padding-left: 1em;
+  border-left: 2px solid #eee;
+}
+
+/* "Proof." 标题的样式 */
+.proof-start {
+  margin: 0;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* 证明正文的样式 */
+.proof-body {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+/* QED 结束符号 (□) 的样式 - 注意这里的类名是 .proof-qed */
+.proof-qed {
+  /* 这是让方块居右的关键！ */
+  text-align: right;
+  font-weight: bold;
+}
+

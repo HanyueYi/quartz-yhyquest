@@ -1,5 +1,6 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
+import ProofScript from "./quartz/components/proof"
 
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
@@ -44,6 +45,7 @@ export const defaultContentPageLayout: PageLayout = {
     Component.Graph(),
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
+    ProofScript(),
   ],
 }
 
@@ -64,5 +66,5 @@ export const defaultListPageLayout: PageLayout = {
     }),
     Component.Explorer(),
   ],
-  right: [],
+  right: [ProofScript(),],
 }
