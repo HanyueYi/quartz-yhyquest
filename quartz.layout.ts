@@ -6,11 +6,33 @@ import ProofScript from "./quartz/components/proof"
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
-  afterBody: [],
+  afterBody: [
+    Component.Comments({
+      provider: 'giscus',
+      options: {
+        // from data-repo
+        repo: 'HanyueYi/quartz-yhyquest',
+        // from data-repo-id
+        repoId: 'R_kgDOOhlNGw',
+        // from data-category
+        category: 'Announcements',
+        // from data-category-id
+        categoryId: 'DIC_kwDOOhlNG84CtzdG',
+        // from data-mapping="pathname"
+        mapping: 'pathname',
+        // from data-strict="1"
+        strict: true,
+        // from data-reactions-enabled="1"
+        reactionsEnabled: true,
+        // from data-input-position="bottom"
+        inputPosition: 'bottom',
+      }
+    }),
+  ],
+
   footer: Component.Footer({
     links: {
-      GitHub: "https://github.com/jackyzha0/quartz",
-      "Discord Community": "https://discord.gg/cRFFHYye7t",
+      GitHub: "https://github.com/HanyueYi/quartz-yhyquest",
     },
   }),
 }
@@ -40,21 +62,21 @@ export const defaultContentPageLayout: PageLayout = {
       ],
     }),
     Component.Explorer(),
-    Component.RecentNotes({
-      title: "Recent Notes", // 列表的标题
-      limit: 5, // 显示的笔记数量
-      // 您还可以添加其他过滤和排序选项
-      filter: (file) => {
-        return !file.frontmatter?.draft // 例如，过滤掉草稿
-      },
-      // sort: (a, b) => {
-      //   // 按修改时间降序排序
-      //   if (a.file.mtime && b.file.mtime) {
-      //   return b.file.mtime.getTime() - a.file.mtime.getTime()
-      //   }
-      //   return 0
-      // }
-    })
+    // Component.RecentNotes({
+    //   title: "Recent Notes", // 列表的标题
+    //   limit: 3, // 显示的笔记数量
+    //   // 您还可以添加其他过滤和排序选项
+    //   filter: (file) => {
+    //     return !file.frontmatter?.draft // 例如，过滤掉草稿
+    //   },
+    //   // sort: (a, b) => {
+    //   //   // 按修改时间降序排序
+    //   //   if (a.file.mtime && b.file.mtime) {
+    //   //   return b.file.mtime.getTime() - a.file.mtime.getTime()
+    //   //   }
+    //   //   return 0
+    //   // }
+    // })
   ],
   right: [
     Component.Graph(),
