@@ -40,6 +40,21 @@ export const defaultContentPageLayout: PageLayout = {
       ],
     }),
     Component.Explorer(),
+    Component.RecentNotes({
+      title: "Recent Notes", // 列表的标题
+      limit: 5, // 显示的笔记数量
+      // 您还可以添加其他过滤和排序选项
+      filter: (file) => {
+        return !file.frontmatter?.draft // 例如，过滤掉草稿
+      },
+      // sort: (a, b) => {
+      //   // 按修改时间降序排序
+      //   if (a.file.mtime && b.file.mtime) {
+      //   return b.file.mtime.getTime() - a.file.mtime.getTime()
+      //   }
+      //   return 0
+      // }
+    })
   ],
   right: [
     Component.Graph(),
