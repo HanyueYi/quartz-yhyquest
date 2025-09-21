@@ -15,9 +15,14 @@ jobs:
           token: ${{ secrets.PAT }}
           submodules: true
 
-      - name: Update submodule B
+      - name: Force update submodule B
         run: |
-          git submodule update --remote --merge
+          # 进入子模块所在的目录，根据之前的日志，它叫 'content'
+          cd content
+          # 从远程仓库拉取最新的信息
+          git fetch
+          # 强行将本地重置为远程 main 分支的最新状态
+          git reset --hard origin/main
 
       - name: Commit and push changes
         run: |
