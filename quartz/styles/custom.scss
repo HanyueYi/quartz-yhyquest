@@ -143,3 +143,26 @@ blockquote.callout .katex {
   font-weight: bold;
 }
 
+
+/* 魔法：给左上角标题加一个漂亮的副标题 */
+.page-title {
+  /* 让标题容器变成垂直排列 */
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2; /* 调整行高，防止挤在一起 */
+}
+
+.page-title a::after {
+  /* 这里写你想显示的字，一定要用引号包起来 */
+  content: "my academic scratchpad"; 
+  
+  /* 下面是美化样式 */
+  display: block;        /* 让它独占一行 */
+  font-size: 0.5em;      /* 字体大小设为主标题的一半 */
+  font-weight: normal;   /* 去掉加粗 */
+  opacity: 0.6;          /* 颜色淡一点，显得高级 */
+  margin-top: 5px;       /* 和主标题拉开一点距离 */
+  font-family: "Source Sans Pro", sans-serif; /* 用正文字体，不要用标题字体 */
+  white-space: nowrap;   /* 重点！强制不换行！防止出现 aca-demic */
+  letter-spacing: 0.5px; /* 字母稍微拉开一点点 */
+}
