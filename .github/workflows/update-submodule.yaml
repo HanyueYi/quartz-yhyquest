@@ -23,6 +23,8 @@ jobs:
           git fetch
           # 强行将本地重置为远程 main 分支的最新状态
           git reset --hard origin/main
+          # 增加下面这一行，用来同步嵌套的子模块
+          git submodule update --init --recursive
 
       - name: Commit and push changes
         run: |
