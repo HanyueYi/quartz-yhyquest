@@ -18,10 +18,10 @@ jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0 # Fetch all history for git info
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: 22
       - name: Add GitHub to known hosts
@@ -30,7 +30,7 @@ jobs:
           ssh-keyscan github.com >> ~/.ssh/known_hosts
           chmod 600 ~/.ssh/known_hosts
       - name: Checkout Repo with Submodules # 给这个步骤取个名字
-        uses: actions/checkout@v4          # 使用官方的 checkout action v4 版本
+        uses: actions/checkout@v6          # 使用官方的 checkout action v4 版本
         with:
           submodules: 'recursive'      # 关键参数：递归检出子模块 (处理 content 目录)
           fetch-depth: 0   
@@ -56,7 +56,7 @@ jobs:
       - name: Build Quartz
         run: npx quartz build
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: public
  
